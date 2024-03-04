@@ -6,4 +6,4 @@ if [ "$#" -eq 1 ]; then
 fi
 
 # Ping the IP address 5 times
-ping -c 5 "$IP_ADDRESS"
+ping -c 5 "$1"
