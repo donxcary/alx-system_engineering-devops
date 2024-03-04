@@ -1,8 +1,24 @@
-#!/usr/bin/env bash
-#Bash script that pings an IP address passed as an argument
+#!/bin/bash
 
-if [ "$#" -eq 0 ]; then
-	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
-else
-	ping -c 5 "$1"
+# Check if an argument is given
+if [ -z "$1" ]; then
+  # If not, display usage and exit
+  echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+  exit 1
 fi
+
+# Assign the argument to a variable
+IP_ADDRESS="$1"
+
+# Ping the IP address 5 times
+ping -c 5 "$IP_ADDRESS"
+
+# Check the exit status of the ping command
+if [ $? -eq 0 ]; then
+  # If successful, print a message
+  echo "The host $IP_ADDRESS is reachable."
+else
+  # If not, print a different message
+  echo "The host $IP_ADDRESS is not reachable."
+fi
+
